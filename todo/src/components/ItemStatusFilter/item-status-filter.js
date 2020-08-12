@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import './item-status-filter.sass';
+import "./item-status-filter.sass";
 
 const ItemStatusFilter = () => {
   return (

@@ -1,10 +1,10 @@
 import React from "react";
-import './todo-list-item.sass';
+import "./todo-list-item.sass";
 
 const TodoListItem = ({label, important=false}) => {
   const style = {
-    color: important ? 'steelblue' : 'black',
-    fontWeight: important ? 'bold' : 'normal'
+    color: important ? "steelblue" : "black",
+    fontWeight: important ? "bold" : "normal"
   };
 
   return (

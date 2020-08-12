@@ -1,5 +1,5 @@
 import React from "react";
-import './search-panel.sass'
+import "./search-panel.sass"
 
 const SearchPanel = () => {
   return (

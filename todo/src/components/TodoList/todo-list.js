@@ -1,6 +1,6 @@
 import React from "react";
 import TodoListItem from "components/TodoListItem";
-import './todo-list.sass';
+import "./todo-list.sass";
 
 const TodoList = ({ todos }) => {
 
