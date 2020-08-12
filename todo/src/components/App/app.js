@@ -1,9 +1,9 @@
 import React from 'react';
 
-import AppHeader from "../app-header";
-import SearchPannel from "../search-panel";
-import TodoList from "../todo-list";
-import ItemStatusFilter from '../item-status-filter';
+import AppHeader from "components/AppHeader";
+import SearchPanel from "components/SearchPanel";
+import TodoList from "components/TodoList";
+import ItemStatusFilter from "components/ItemStatusFilter";
 
 import './app.sass';
 
@@ -18,7 +18,7 @@ const App = () => {
     <div className="todo-app">
       <AppHeader toDo={1} done={3}/>
       <div className="top-panel d-flex">
-        <SearchPannel/>
+        <SearchPanel/>
         <ItemStatusFilter />
       </div>
       <TodoList todos={ todoData }/>
