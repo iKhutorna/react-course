@@ -2,6 +2,18 @@ import React, {Component} from "react";
 import "./todo-list-item.sass";
 
 export default class TodoListItem extends Component {
+
+  onLabelClick = () => {
+    console.log(`Done: ${this.props.label}`);
+  };
+
+  // constructor() {
+  //   super();
+  //   this.onLabelClick = () => {
+  //     console.log(`Done: ${this.props.label}`)
+  //   }
+  // }
+  
   render () {
     const {label, important=false} = this.props;
 
@@ -14,7 +26,8 @@ export default class TodoListItem extends Component {
       <span>
       <span
         className="todo-list-item"
-        style={style}>
+        style={style}
+        onClick={this.onLabelClick}>
         {label}
       </span>
 
