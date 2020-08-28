@@ -4,7 +4,7 @@ import "./todo-list-item.sass";
 export default class TodoListItem extends Component {
 
   render () {
-    const {label, onDeleted, onToggleImportant, onToggleDone, important, done} = this.props;
+    const {label, onDeleted, onToggleImportant, onToggleDone, important, done, hidden} = this.props;
 
     let classNames = "todo-list-item";
 
@@ -14,6 +14,10 @@ export default class TodoListItem extends Component {
 
     if (important) {
         classNames += " important";
+    }
+
+    if (hidden) {
+      classNames += " hidden"
     }
 
     return (

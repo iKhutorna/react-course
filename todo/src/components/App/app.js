@@ -22,6 +22,8 @@ export default class App extends Component {
     return {
       label,
       important: false,
+      hidden: false,
+      done: false,
       id: this.maxId++,
     };
   };
@@ -81,16 +83,84 @@ export default class App extends Component {
     });
   };
 
+  onSearchChange = (e) => {
+    const searchValue = e.target.value.toLowerCase();
+    this.setState (({todoData}) => {
+      const newArr = todoData.map((el) => {
+        if(el.label.toLowerCase().includes(searchValue)) {
+          el.hidden = false;
+        } else {
+          el.hidden = true;
+        }
+        return el;
+      });
+
+      return {
+        todoData: newArr
+      }
+    });
+  };
+
+  onShowActive = () => {
+    this.setState (({todoData}) => {
+      const newArr = todoData.map((el) => {
+        if(el.done) {
+          el.hidden = true;
+        } else {
+          el.hidden = false;
+        }
+        return el;
+      });
+      return {
+        todoData: newArr
+      }
+    });
+  };
+
+  onShowDone = () => {
+    this.setState(({todoData}) => {
+      const newArr = todoData.map((el) => {
+        if(el.done) {
+          el.hidden = false;
+        } else {
+          el.hidden = true;
+        }
+        return el;
+      });
+      return {
+        todoData: newArr
+      }
+    });
+  };
+
+  onShowAll = () => {
+    this.setState(({todoData}) => {
+      const newArr = todoData.map((el) => {
+        el.hidden = false;
+        return el;
+      });
+      return {
+        todoData: newArr
+      }
+    });
+  };
+
+
+
   render () {
     const {todoData} = this.state;
+    console.log(todoData);
     const doneCount = todoData.filter((el) => el.done).length;
     const todoCount = todoData.length - doneCount;
     return (
       <div className="todo-app">
         <AppHeader toDo={todoCount} done={doneCount}/>
         <div className="top-panel d-flex">
-          <SearchPanel/>
-          <ItemStatusFilter />
+          <SearchPanel onSearchChange={this.onSearchChange}/>
+          <ItemStatusFilter
+            onShowActive={this.onShowActive}
+            onShowDone={this.onShowDone}
+            onShowAll={this.onShowAll}/>
         </div>
         <TodoList
           todos={ todoData }
