@@ -83,18 +83,16 @@ export default class App extends Component {
     });
   };
 
-  onSearchChange = (e) => {
-    const searchValue = e.target.value.toLowerCase();
+  onSearchChange = (newSearchValue) => {
     this.setState (({todoData}) => {
       const newArr = todoData.map((el) => {
-        if(el.label.toLowerCase().includes(searchValue)) {
+        if(el.label.toLowerCase().includes(newSearchValue)) {
           el.hidden = false;
         } else {
           el.hidden = true;
         }
         return el;
       });
-
       return {
         todoData: newArr
       }
@@ -149,7 +147,6 @@ export default class App extends Component {
 
   render () {
     const {todoData} = this.state;
-    console.log(todoData);
     const doneCount = todoData.filter((el) => el.done).length;
     const todoCount = todoData.length - doneCount;
     return (
